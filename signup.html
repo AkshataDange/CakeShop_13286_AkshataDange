@@ -4,104 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <!-- favicon -->
-    <link rel="icon" type="png" href="./images/logo.png">
-    <link rel="stylesheet" href="./style.css"> <!-- Link to your CSS file -->
+    <title>Contact Us</title>
+     <!-- favicon -->
+     <link rel="icon" type="png" href="./images/logo.png">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-    <!-- header section start here  -->
+    <!-- Header Section -->
     <header class="header">
         <div class="logoContent">
-            <a href="./index.html" class="logo"><img src="./images/logo.png" alt=""></a>
+            <a href="./index.html" class="logo"><img src="images/logo.png" alt=""></a>
             <h1 class="logoName">Akshu's Cake</h1>
         </div>
         <nav class="navbar">
             <a href="./index.html">Home</a>
-            <a href="./contact.html">contact</a>
+            <a href="./blog.html">Blogs</a>
+            <a href="./signup.html">Sign Up/Login</a>
         </nav>
     </header>
 
-    <section class="signup-section">
+    <!-- Contact Form Section -->
+    <section class="contact-section">
         <div class="form-container">
-            <h2>Create Your Account</h2>
-            <!-- Error message container -->
-            <div id="error-message" class="error-message"></div>
-            <form action="#" method="post">
+            <h2>Contact Us</h2>
+            <form  onsubmit="return allvalidation()" novalidate>
                 <div class="input-box">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    <span id="nameError" class="error"></span>
                 </div>
                 <div class="input-box">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                    <input type="email" id="email" name="email" autocomplete="off" autocapitalize="none" required>
+                    <div id="emailError" style="color: red;"></div>
                 </div>
                 <div class="input-box">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Create a password">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your message" rows="5" cols="2" required></textarea>
+                    <span id="messageError" class="error"></span>
                 </div>
-                <div class="input-box">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password"
-                        placeholder="Confirm your password">
-                </div>
-                <button type="submit" class="btn">Sign Up</button>
-                <p>Already have an account? <a href="./login.html">Log In</a></p>
+                <button type="submit" class="btn" id="contactForm">Submit</button>
             </form>
         </div>
     </section>
-
-    <script>
-        document.querySelector('form').addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent form submission
-
-            const username = document.getElementById('username').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            const passwordPattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{5,12}$");
-
-            // Error message container
-            const errorNode6 = document.getElementById('error-message');
-
-            // Reset error message
-            errorNode6.textContent = "";
-
-            if (username === "") {
-                errorNode6.textContent = "Username is required.";
-                return;
-            } else if (!/^[a-zA-Z\s]+$/.test(username)) {
-                errorNode6.textContent = "Username must only contain letters and spaces.";
-                return;
-            }
-
-            // Email validation
-            if (email === "") {
-                errorNode6.textContent = "Email is required.";
-                return;
-            } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email)) {
-                errorNode6.textContent = "Please enter a valid email address.";
-                return;
-            }
-            // Password validation
-            if (password === "") {
-                errorNode6.textContent = "Password is required.";
-                return;
-            } else if (!passwordPattern.test(password)) {
-                errorNode6.textContent = "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character (@$!%*?&), and be 5 to 12 characters long.";
-                return;
-            } else if (password !== confirmPassword) {
-                errorNode6.textContent = "Passwords do not match!";
-                return;
-            }
-
-            alert('Sign-up successful! Redirecting to the home page...');
-            window.location.href = 'index.html';
-        });
-    </script>
-
-
+<script src="./jquery-3.7.1.min.map"></script>
+    <script src="./contact.js"></script> <!-- Link to your JavaScript file -->
 </body>
 
 </html>
