@@ -7,7 +7,6 @@ var messageNode=$("#messsage")
 
 nameNode.on("keyup",()=>namevalidation())
 emailNode.on("keyup",()=>emailvalidation())
-messageNode.on("keyup",()=>messagevalidation())
 
 contactForm.on("submit",()=>allvalidation())
 
