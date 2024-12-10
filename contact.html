@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+     <!-- favicon -->
+     <link rel="icon" type="png" href="./images/logo.png">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logoContent">
+            <a href="./index.html" class="logo"><img src="images/logo.png" alt=""></a>
+            <h1 class="logoName">Akshu's Cake</h1>
+        </div>
+        <nav class="navbar">
+            <a href="./index.html">Home</a>
+            <a href="./blog.html">Blogs</a>
+            <a href="./signup.html">Sign Up/Login</a>
+        </nav>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section">
+        <div class="form-container">
+            <h2>Contact Us</h2>
+            <form  onsubmit="return allvalidation()" novalidate>
+                <div class="input-box">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    <span id="nameError" class="error"></span>
+                </div>
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="off" autocapitalize="none" required>
+                    <div id="emailError" style="color: red;"></div>
+                </div>
+                <div class="input-box">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your message" rows="5" cols="2" required></textarea>
+                    <span id="messageError" class="error"></span>
+                </div>
+                <button type="submit" class="btn" id="contactForm">Submit</button>
+            </form>
+        </div>
+    </section>
+<script src="./jquery-3.7.1.min.map"></script>
+    <script src="./contact.js"></script> <!-- Link to your JavaScript file -->
+</body>
+
+</html>
