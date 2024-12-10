@@ -54,83 +54,81 @@
 
     <script>
         document.querySelector('form').addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent form submission
+    e.preventDefault(); // Prevent form submission
 
-            const username = document.getElementById('username').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            const passwordPattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{5,12}$");
-            const invalidBorder = "2px solid red";
-            const validBorder = "2px solid green";
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const passwordPattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{5,12}$");
+    const invalidBorder = "4px solid red";
+    const validBorder = "4px solid green";
 
-            // Error message container
-            const errorNode6 = document.getElementById('error-message');
+    // Error message container
+    const errorNode6 = document.getElementById('error-message');
+    errorNode6.textContent = ""; // Clear previous messages
 
-            // Reset error message
-            errorNode6.textContent = "";
-            document.getElementById('username').style.border = "";
-            document.getElementById('email').style.border = "";
-            document.getElementById('password').style.border = "";
-            document.getElementById('confirm-password').style.border = "";
+    let valid = true; // Track if the form is valid
 
-            let valid = true; // Track if the form is valid
+    // Username validation
+    if (username === "") {
+        errorNode6.textContent += "Username is required.\n";
+        document.getElementById('username').style.border = invalidBorder;
+        valid = false;
+    } else if (!/^[a-zA-Z\s]+$/.test(username)) {
+        errorNode6.textContent += "Username must only contain letters and spaces.\n";
+        document.getElementById('username').style.border = invalidBorder;
+        valid = false;
+    } else {
+        document.getElementById('username').style.border = validBorder;
+    }
 
-            if (username === "") {
-                errorNode6.textContent = "Username is required.";
-                document.getElementById('username').style.border = invalidBorder;
-                rvalid = false;
-            } else if (!/^[a-zA-Z\s]+$/.test(username)) {
-                errorNode6.textContent = "Username must only contain letters and spaces.";
-                document.getElementById('username').style.border = invalidBorder;
-                valid = false;
-            } else {
-                document.getElementById('username').style.border = validBorder;
-            }
+    // Email validation
+    if (email === "") {
+        errorNode6.textContent += "Email is required.\n";
+        document.getElementById('email').style.border = invalidBorder;
+        valid = false;
+    } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email)) {
+        errorNode6.textContent += "Please enter a valid email address.\n";
+        document.getElementById('email').style.border = invalidBorder;
+        valid = false;
+    } else {
+        document.getElementById('email').style.border = validBorder;
+    }
 
-            // Email validation
-            if (email === "") {
-                errorNode6.textContent = "Email is required.";
-                document.getElementById('email').style.border = invalidBorder;
-                valid = false;
+    // Password validation
+    if (password === "") {
+        errorNode6.textContent += "Password is required.\n";
+        document.getElementById('password').style.border = invalidBorder;
+        valid = false;
+    } else if (!passwordPattern.test(password)) {
+        errorNode6.textContent += "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character (@$!%*?&), and be 5 to 12 characters long.\n";
+        document.getElementById('password').style.border = invalidBorder;
+        valid = false;
+    } else {
+        document.getElementById('password').style.border = validBorder;
+    }
 
-            } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email)) {
-                errorNode6.textContent = "Please enter a valid email address.";
-                document.getElementById('email').style.border = invalidBorder;
-                valid = false;
-                return;
-            } else {
-                document.getElementById('email').style.border = validBorder;
-            }
-            // Password validation
-            if (password === "") {
-                errorNode6.textContent = "Password is required.";
-                document.getElementById('password').style.border = invalidBorder;
-                valid = false;
-            } else if (!passwordPattern.test(password)) {
-                errorNode6.textContent = "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character (@$!%*?&), and be 5 to 12 characters long.";
-                document.getElementById('password').style.border = invalidBorder;
-                valid = false;
-            }
-            else {
-                document.getElementById('password').style.border = validBorder;
-            }
+    // Confirm Password validation
+if (confirmPassword === "") {
+    errorNode6.textContent += "Confirm password is required.\n";
+    document.getElementById('confirm-password').style.border = invalidBorder;
+    valid = false;
+} else if (password !== confirmPassword) {
+    errorNode6.textContent += "Passwords do not match!\n";
+    document.getElementById('confirm-password').style.border = invalidBorder;
+    valid = false;
+} else {
+    document.getElementById('confirm-password').style.border = validBorder;
+}
 
-            // Confirm Password validation
 
-            if (password !== confirmPassword) {
-                errorNode6.textContent = "Passwords do not match!";
-                document.getElementById('confirm-password').style.border = invalidBorder;
-                valid = false;
-            } else {
-                document.getElementById('confirm-password').style.border = validBorder;
-            }
-
-            if (valid) {
-                alert('Sign-up successful! Redirecting to the home page...');
-                window.location.href = 'index.html';
-            }
-        });
+    // Final check
+    if (valid) {
+        alert('Sign-up successful! Redirecting to the home page...');
+        window.location.href = 'index.html';
+    }
+});
     </script>
 
 
